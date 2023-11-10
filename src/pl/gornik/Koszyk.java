@@ -66,7 +66,7 @@ public class Koszyk {
                             }
                             else  {
                                 products.get(i).setCount(products.get(i).getCount() - choice3);
-                                koszyk.add(products.get(i));
+                                koszyk.add(products.get(i) * choice3);
                                 sum = sum + products.get(i).sum();
                             }
                         }
