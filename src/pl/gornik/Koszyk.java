@@ -12,31 +12,12 @@ import java.util.Scanner;
 public class Koszyk {
     public static void main(String[] args) {
         List<Product> products = new ArrayList<>();
-        products.add(new Book("HarryPotter", 50, 32.99, "J.K. Rowling"));
-        products.add(new Book("Tak trzeba żyć", 432, 41.39, "Sławomir Mentzen"));
-        products.add(new Book("Medusa, czyli 23 kilometry do…", 65, 18.93, "Meduska"));
-        products.add(new Book("CHŁOPKI. OPOWIEŚĆ O NASZYCH BABKACH Twarda", 82, 39.67, "Meduska"));
-        Toy toy1 = new Toy("Action Figure 1", 8, 12.50, "3+");
-        Toy toy2 = new Toy("Educational Toy", 15, 18.99, "5+");
-        Toy toy3 = new Toy("Plush Toy", 10, 14.99, "2+");
-        Toy toy4 = new Toy("Building Blocks", 20, 24.99, "4+");
-        Disc disc1 = new Disc("Music Album 1", 3, 29.99, "Some Artist 1");
-        Disc disc2 = new Disc("Concert Recording", 5, 34.49, "Another Artist");
-        Disc disc3 = new Disc("Greatest Hits", 8, 27.99, "Famous Band");
-        Disc disc4 = new Disc("Instrumental Collection", 6, 31.99, "Instrumentalist");
-
-        products.add(toy1);
-        products.add(toy2);
-        products.add(toy3);
-        products.add(toy4);
-        products.add(disc1);
-        products.add(disc2);
-        products.add(disc3);
-        products.add(disc4);
+        shop(products);
         List<Product> koszyk = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
         double sum = 0;
+        double sumshop = 0;
         while (check) {
             double roundOff = (double) Math.round(sum * 100) / 100;
             System.out.println("------------------------------");
@@ -48,9 +29,12 @@ public class Koszyk {
                 case "tak":
                     for (Product product : products) {
                         System.out.println(product.displayProduct());
+                        sumshop = sumshop + product.sum() * product.getCount();
                     }
+
                     System.out.println("------------------------------");
                     System.out.println("Wpisz product ktory chcesz wybrac");
+                    System.out.println("wartosc sklepu "+sumshop+" zł");
                     String choice2 = scanner.nextLine();
                     for (int i = 0; i < products.size(); i++) {
                         if (choice2.equals(products.get(i).getTitle())) {
@@ -103,6 +87,31 @@ public class Koszyk {
 
             }
         }
+    }
+    public static void shop(List<Product> products){
+        products.add(new Book("HarryPotter", 50, 32.99, "J.K. Rowling"));
+        products.add(new Book("Tak trzeba żyć", 432, 41.39, "Sławomir Mentzen"));
+        products.add(new Book("Medusa, czyli 23 kilometry do…", 65, 18.93, "Meduska"));
+        products.add(new Book("CHŁOPKI. OPOWIEŚĆ O NASZYCH BABKACH Twarda", 82, 39.67, "Meduska"));
+        Toy toy1 = new Toy("Action Figure 1", 8, 12.50, "3+");
+        Toy toy2 = new Toy("Educational Toy", 15, 18.99, "5+");
+        Toy toy3 = new Toy("Plush Toy", 10, 14.99, "2+");
+        Toy toy4 = new Toy("Building Blocks", 20, 24.99, "4+");
+        Disc disc1 = new Disc("Music Album 1", 3, 29.99, "Some Artist 1");
+        Disc disc2 = new Disc("Concert Recording", 5, 34.49, "Another Artist");
+        Disc disc3 = new Disc("Greatest Hits", 8, 27.99, "Famous Band");
+        Disc disc4 = new Disc("Instrumental Collection", 6, 31.99, "Instrumentalist");
+
+        products.add(toy1);
+        products.add(toy2);
+        products.add(toy3);
+        products.add(toy4);
+        products.add(disc1);
+        products.add(disc2);
+        products.add(disc3);
+        products.add(disc4);
+
+
     }
 }
 
