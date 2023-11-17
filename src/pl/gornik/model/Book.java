@@ -10,6 +10,6 @@ public class Book extends Product {
 
     @Override
     public String displayProduct() {
-        return super.displayProduct()+" author= "+author;
+        return super.displayProduct()+" autor= "+author;
     }
 }

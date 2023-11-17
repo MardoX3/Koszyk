@@ -38,6 +38,7 @@ public class Koszyk {
         boolean check = true;
         double sum = 0;
         while (check) {
+            double roundOff = (double) Math.round(sum * 100) / 100;
             System.out.println("------------------------------");
             System.out.println("Czy chcesz dodac jakis product do koszyka TAK czy NIE lub wpisz KOSZYK");
             System.out.println("------------------------------");
@@ -55,19 +56,23 @@ public class Koszyk {
                         if (choice2.equals(products.get(i).getTitle())) {
                             System.out.println("------------------------------");
                             System.out.println("ile sztuk chcesz dodac");
-                            int choice3 = Integer.parseInt(scanner.nextLine());
-                            System.out.println("Dodaje "+choice3+" sztuki" + products.get(i).getTitle() + "  do koszyka");
+                            int count = Integer.parseInt(scanner.nextLine());
+                            System.out.println("Dodaje "+count+" sztuki " + products.get(i).getTitle() + "  do koszyka");
                             System.out.println("------------------------------");
                             if (products.get(i).getCount() == 0) {
                                 System.out.println("------------------------------");
                                 System.out.println("produkt nie istnieje");
                                 System.out.println("------------------------------");
+                                products.remove(i);
                             }
                             else  {
-                                for(int j = 0; j < choice3; j++){
-                                    products.get(j).setCount(products.get(i).getCount() - 1);
+                                for(int j = 0; j < count; j++){
+                                    products.get(i).setCount(products.get(i).getCount() - 1);
                                     koszyk.add(products.get(i));
                                     sum = sum + products.get(i).sum();
+                                    if (products.get(i).getCount() == 0) {
+                                        products.remove(i);
+                                    }
                                 }
                             }
                         }
@@ -77,7 +82,7 @@ public class Koszyk {
                 case "nie":
                     System.out.println("------------------------------");
                     System.out.println("Podsumowanie cena za produkty wynosi: ");
-                    System.out.println(sum+" zł");
+                    System.out.println(roundOff+" zł");
                     System.out.println("------------------------------");
                     check = false;
                     break;
@@ -89,7 +94,7 @@ public class Koszyk {
                         System.out.println(Koszyk.displayProduct());
                     }
                     System.out.println("------------------------------");
-                    System.out.println(sum+" zł");
+                    System.out.println(roundOff);
                     break;
                 default:
                     System.out.println("------------------------------");

@@ -32,7 +32,7 @@ public class Product {
     }
 
     public String displayProduct() {
-        return "title= " + title +
+        return "tytuł= " + title +
                 " liczbaSztuk= " + count+
                 " cena= " + price + " zł";
     }

@@ -10,6 +10,6 @@ public class Toy extends Product{
 
     @Override
     public String displayProduct() {
-        return super.displayProduct() + " minimalAge= "+minimalAge;
+        return super.displayProduct() + " minimalnyWiek= "+minimalAge;
     }
 }
