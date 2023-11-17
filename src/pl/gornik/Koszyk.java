@@ -62,12 +62,13 @@ public class Koszyk {
                                 System.out.println("------------------------------");
                                 System.out.println("produkt nie istnieje");
                                 System.out.println("------------------------------");
-                                products.remove(i);
                             }
                             else  {
-                                products.get(i).setCount(products.get(i).getCount() - choice3);
-                                koszyk.add(products.get(i) * choice3);
-                                sum = sum + products.get(i).sum();
+                                for(int j = 0; j < choice3; j++){
+                                    products.get(j).setCount(products.get(i).getCount() - 1);
+                                    koszyk.add(products.get(i));
+                                    sum = sum + products.get(i).sum();
+                                }
                             }
                         }
                     }
